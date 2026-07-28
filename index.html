@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover Land LLC purchases vacant land directly from property owners. Get a simple, no-obligation cash offer with no commissions and no hidden fees." />
+  <meta name="theme-color" content="#173f35" />
+  <title>Discover Land LLC | Sell Your Vacant Land</title>
+  <style>
+    :root{
+      --forest:#143d32;
+      --forest-dark:#0b2922;
+      --forest-light:#245e4d;
+      --sage:#dbe8df;
+      --cream:#f7f3e9;
+      --gold:#d1a65a;
+      --gold-light:#efd7a8;
+      --text:#1c2d28;
+      --muted:#65736e;
+      --white:#fff;
+      --line:#dbe2dd;
+      --shadow:0 24px 70px rgba(10,40,33,.16);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      background:var(--white);
+    }
+    a{color:inherit}
+    button,input,textarea{font:inherit}
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}
+
+    .announcement{
+      background:var(--forest-dark);
+      color:rgba(255,255,255,.88);
+      padding:9px 16px;
+      text-align:center;
+      font-size:.9rem;
+      letter-spacing:.01em;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(219,226,221,.85);
+    }
+
+    nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      font-weight:900;
+      color:var(--forest);
+      letter-spacing:-.02em;
+    }
+
+    .logo{
+      width:44px;height:44px;border-radius:50% 50% 50% 12px;
+      background:linear-gradient(145deg,var(--gold-light),var(--gold));
+      position:relative;
+      transform:rotate(-12deg);
+      box-shadow:inset 0 0 0 5px rgba(255,255,255,.32);
+    }
+    .logo:before,.logo:after{
+      content:"";position:absolute;background:var(--forest-dark);opacity:.74;border-radius:2px
+    }
+    .logo:before{width:2px;height:29px;left:21px;top:7px;transform:rotate(36deg)}
+    .logo:after{width:18px;height:2px;left:11px;top:24px;transform:rotate(-23deg)}
+
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:.95rem;font-weight:700}
+    .nav-links a{text-decoration:none}
+    .nav-links a:hover{color:var(--gold)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      text-decoration:none;border:1px solid transparent;border-radius:999px;
+      padding:14px 21px;font-weight:800;cursor:pointer;
+      transition:.22s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--gold);color:var(--forest-dark);box-shadow:0 12px 28px rgba(209,166,90,.28)}
+    .btn-primary:hover{box-shadow:0 16px 34px rgba(209,166,90,.38)}
+    .btn-light{background:var(--white);border-color:var(--line);color:var(--forest)}
+    .btn-dark{background:var(--forest);color:var(--white)}
+    .btn-block{width:100%}
+
+    .hero{
+      position:relative;overflow:hidden;padding:96px 0 86px;
+      background:
+        radial-gradient(circle at 84% 12%,rgba(209,166,90,.23),transparent 26%),
+        linear-gradient(140deg,#fbf8f1 0%,#eaf2eb 100%);
+    }
+    .hero:before{
+      content:"";position:absolute;left:-140px;bottom:-180px;width:520px;height:520px;
+      border-radius:50%;border:78px solid rgba(20,61,50,.05);
+    }
+    .hero-grid{
+      position:relative;z-index:2;
+      display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+      font-weight:900;color:var(--forest);
+    }
+    .eyebrow:before{content:"";width:30px;height:2px;background:var(--gold)}
+
+    h1{
+      margin:18px 0 20px;
+      font-size:clamp(3rem,6vw,5.55rem);
+      line-height:.96;letter-spacing:-.06em;
+      color:var(--forest-dark);max-width:760px;
+    }
+    .hero-copy{font-size:1.18rem;color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:31px}
+    .trust{display:flex;gap:16px 28px;flex-wrap:wrap;margin-top:30px;color:var(--forest);font-weight:750;font-size:.94rem}
+    .trust span:before{
+      content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;
+      border-radius:50%;background:var(--forest);color:white;margin-right:8px;font-size:.75rem
+    }
+
+    .offer-card{
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:28px;padding:34px;
+      box-shadow:var(--shadow);
+    }
+    .offer-card h2{margin:0 0 8px;color:var(--forest-dark);font-size:1.7rem}
+    .offer-card p{margin:0 0 20px;color:var(--muted)}
+    .field{display:grid;gap:7px;margin-top:14px}
+    label{font-size:.9rem;font-weight:800;color:var(--forest-dark)}
+    input,textarea{
+      width:100%;border:1px solid var(--line);border-radius:13px;
+      padding:14px;background:white;color:var(--text);outline:none
+    }
+    input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(209,166,90,.16)}
+    textarea{min-height:100px;resize:vertical}
+    .privacy{font-size:.78rem;color:var(--muted);text-align:center;margin-top:10px}
+
+    .stats{
+      margin-top:-1px;background:var(--forest);color:white;padding:28px 0;
+    }
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+    .stat strong{display:block;font-size:1.5rem;color:var(--gold-light)}
+    .stat span{font-size:.9rem;color:rgba(255,255,255,.7)}
+
+    section{padding:90px 0}
+    .section-head{max-width:730px;margin-bottom:42px}
+    .section-head h2{
+      margin:10px 0 12px;font-size:clamp(2.15rem,4vw,3.45rem);
+      line-height:1.05;letter-spacing:-.045em;color:var(--forest-dark)
+    }
+    .section-head p{color:var(--muted);font-size:1.07rem}
+
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);padding:29px;
+      background:white;box-shadow:0 12px 38px rgba(15,45,38,.06)
+    }
+    .step{
+      display:grid;place-items:center;width:49px;height:49px;border-radius:15px;
+      background:var(--sage);color:var(--forest);font-weight:900
+    }
+    .card h3{margin:20px 0 8px;color:var(--forest-dark)}
+    .card p{margin:0;color:var(--muted)}
+
+    .split{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:65px;align-items:center
+    }
+    .land-art{
+      min-height:460px;border-radius:30px;overflow:hidden;position:relative;
+      background:
+        linear-gradient(150deg,transparent 48%,rgba(255,255,255,.2) 49%,transparent 50%),
+        linear-gradient(24deg,#acc096 0 31%,#799772 31% 52%,#4d735d 52% 100%);
+      box-shadow:var(--shadow)
+    }
+    .land-art:before{
+      content:"";position:absolute;left:-12%;right:-12%;top:47%;height:14px;
+      background:#e2d6b8;transform:rotate(-9deg);box-shadow:0 0 0 4px rgba(255,255,255,.2)
+    }
+    .land-art:after{
+      content:"LAND • OPPORTUNITY • SIMPLICITY";position:absolute;left:28px;bottom:25px;
+      color:white;font-size:.78rem;font-weight:900;letter-spacing:.15em
+    }
+    .split-copy h2{
+      color:var(--forest-dark);font-size:clamp(2.15rem,4vw,3.4rem);
+      line-height:1.08;letter-spacing:-.045em;margin:12px 0 18px
+    }
+    .split-copy p{color:var(--muted)}
+    .check-list{display:grid;gap:13px;margin:24px 0 28px}
+    .check{display:flex;gap:12px;align-items:flex-start;font-weight:700;color:var(--forest)}
+    .check:before{
+      content:"✓";flex:0 0 25px;height:25px;display:grid;place-items:center;
+      background:var(--sage);border-radius:50%;font-size:.8rem
+    }
+
+    .benefit-section{background:var(--forest);color:white}
+    .benefit-section .section-head h2,.benefit-section .eyebrow{color:white}
+    .benefit-section .section-head p{color:rgba(255,255,255,.7)}
+    .benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .benefit{
+      padding:24px;border-radius:20px;border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.06);display:flex;gap:16px
+    }
+    .benefit-icon{
+      flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      background:var(--gold);color:var(--forest-dark);font-weight:900
+    }
+    .benefit h3{margin:0 0 4px}
+    .benefit p{margin:0;color:rgba(255,255,255,.7)}
+
+    .testimonials{background:var(--cream)}
+    .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .quote{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+    .stars{color:var(--gold);letter-spacing:.12em;font-size:1.1rem}
+    .quote p{color:var(--muted);font-size:1rem}
+    .quote strong{color:var(--forest-dark)}
+    .quote small{display:block;color:var(--muted);margin-top:2px}
+
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+    .faq-intro h2{
+      font-size:clamp(2.1rem,4vw,3.3rem);line-height:1.05;
+      color:var(--forest-dark);letter-spacing:-.045em
+    }
+    details{border-bottom:1px solid var(--line);padding:19px 0}
+    summary{cursor:pointer;font-weight:850;color:var(--forest-dark);list-style:none;position:relative;padding-right:28px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";position:absolute;right:0;top:-2px;font-size:1.4rem;color:var(--gold)}
+    details[open] summary:after{content:"–"}
+    details p{color:var(--muted);margin-bottom:2px}
+
+    .cta{background:linear-gradient(135deg,var(--forest-dark),var(--forest-light));color:white}
+    .cta-box{
+      display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;
+      padding:46px;border:1px solid rgba(255,255,255,.14);border-radius:26px;
+      background:rgba(255,255,255,.06)
+    }
+    .cta h2{margin:0 0 8px;font-size:clamp(2rem,4vw,3rem);line-height:1.05}
+    .cta p{margin:0;color:rgba(255,255,255,.7)}
+    .cta-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+
+    footer{background:#071e19;color:rgba(255,255,255,.68);padding:38px 0;font-size:.9rem}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+    .footer-brand{color:white;font-weight:850}
+
+    @media(max-width:900px){
+      .hero-grid,.split,.faq-grid,.cta-box{grid-template-columns:1fr}
+      .process-grid,.quote-grid{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .benefits{grid-template-columns:1fr}
+      .nav-links a:not(.btn){display:none}
+      .cta-actions{justify-content:flex-start}
+    }
+    @media(max-width:560px){
+      .container{width:min(100% - 26px,1180px)}
+      nav{min-height:68px}
+      .brand span:last-child{font-size:.92rem}
+      .nav-links .btn{padding:10px 14px;font-size:.86rem}
+      .hero{padding:56px 0 62px}
+      h1{font-size:3.15rem}
+      .offer-card,.cta-box{padding:24px}
+      section{padding:68px 0}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .land-art{min-height:330px}
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">A clear, professional way to sell vacant land</div>
+
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Discover Land LLC home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>DISCOVER LAND LLC</span>
+      </a>
+      <div class="nav-links">
+        <a href="#process">How It Works</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-primary" href="tel:+10000000000">Call Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Land made simple</div>
+          <h1>Sell your vacant land without the usual hassle.</h1>
+          <p class="hero-copy">
+            Discover Land LLC works directly with property owners to create a simple,
+            transparent path to selling unwanted land. No commissions, no pressure,
+            and no complicated listing process.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#offer">Request a Free Offer</a>
+            <a class="btn btn-light" href="tel:+10000000000">Call (000) 000-0000</a>
+          </div>
+          <div class="trust">
+            <span>No commissions</span>
+            <span>Closing costs covered</span>
+            <span>No obligation</span>
+          </div>
+        </div>
+
+        <form class="offer-card" id="offer" action="mailto:YOUR_EMAIL@example.com" method="post" enctype="text/plain">
+          <h2>Get your free property review</h2>
+          <p>Tell us about your land and we will contact you to discuss the next step.</p>
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="Name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="Phone" type="tel" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="Email" type="email" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="property">Property county, state, or APN</label>
+            <input id="property" name="Property" type="text" required />
+          </div>
+          <div class="field">
+            <label for="details">Anything else we should know?</label>
+            <textarea id="details" name="Details" placeholder="Acreage, access, taxes, inheritance, or other details"></textarea>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Request My Offer</button>
+          <div class="privacy">Your information is kept private and used only to discuss your property.</div>
+        </form>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="container stats-grid">
+        <div class="stat"><strong>Direct</strong><span>Work directly with the buyer</span></div>
+        <div class="stat"><strong>Simple</strong><span>Clear paperwork and communication</span></div>
+        <div class="stat"><strong>Flexible</strong><span>Choose a closing timeline</span></div>
+        <div class="stat"><strong>Private</strong><span>Professional and confidential</span></div>
+      </div>
+    </div>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <h2>A simple three-step process</h2>
+          <p>We keep the process straightforward from the first conversation through closing.</p>
+        </div>
+        <div class="process-grid">
+          <article class="card">
+            <div class="step">1</div>
+            <h3>Share the Property Details</h3>
+            <p>Send us the APN, county, acreage, or any information you have about the property.</p>
+          </article>
+          <article class="card">
+            <div class="step">2</div>
+            <h3>Review Your Offer</h3>
+            <p>We research the land and present a straightforward offer with no obligation.</p>
+          </article>
+          <article class="card">
+            <div class="step">3</div>
+            <h3>Complete the Sale</h3>
+            <p>If the offer works for you, we coordinate the paperwork and closing process.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="land-art" role="img" aria-label="Stylized aerial view of open land"></div>
+        <div class="split-copy">
+          <div class="eyebrow">A better alternative</div>
+          <h2>Your land should not feel like a burden.</h2>
+          <p>
+            Vacant land can become difficult to manage when it is inherited, unused,
+            far away, or no longer part of your plans. Discover Land LLC provides an
+            alternative to listing the property and waiting for a traditional buyer.
+          </p>
+          <div class="check-list">
+            <div class="check">Inherited and unwanted property</div>
+            <div class="check">Remote or difficult-to-manage land</div>
+            <div class="check">Property with back taxes or ongoing costs</div>
+            <div class="check">Land that has been sitting unused</div>
+          </div>
+          <a class="btn btn-dark" href="#offer">Tell Us About Your Land</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefit-section" id="why-us">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Why Discover Land</div>
+          <h2>A professional, no-pressure experience</h2>
+          <p>Our goal is to make the sale understandable, respectful, and convenient.</p>
+        </div>
+        <div class="benefits">
+          <div class="benefit">
+            <div class="benefit-icon">✓</div>
+            <div><h3>No Agent Commissions</h3><p>You work directly with us without a traditional real-estate listing.</p></div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">✓</div>
+            <div><h3>Closing Costs Covered</h3><p>We can handle standard title and transfer costs associated with the purchase.</p></div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">✓</div>
+            <div><h3>Land in Any Condition</h3><p>Remote, inherited, unused, or difficult-to-manage parcels are welcome.</p></div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">✓</div>
+            <div><h3>No Pressure</h3><p>Review the offer at your own pace. There is no obligation to accept it.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Owner experiences</div>
+          <h2>What property owners value most</h2>
+          <p>Replace these sample testimonials with real customer feedback as you collect it.</p>
+        </div>
+        <div class="quote-grid">
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“The communication was clear and the process was much easier than I expected.”</p>
+            <strong>Property Owner</strong><small>Sample testimonial</small>
+          </article>
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“I appreciated having a straightforward option for land my family no longer used.”</p>
+            <strong>Property Owner</strong><small>Sample testimonial</small>
+          </article>
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Every step was explained, and I never felt pressured to make a decision.”</p>
+            <strong>Property Owner</strong><small>Sample testimonial</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container faq-grid">
+        <div class="faq-intro">
+          <div class="eyebrow">Frequently asked questions</div>
+          <h2>Helpful answers before you begin</h2>
+          <p>Still have questions? Call or text us and we will walk you through the process.</p>
+        </div>
+        <div>
+          <details open>
+            <summary>Is there any obligation to accept an offer?</summary>
+            <p>No. You can review the offer and decide whether it works for you.</p>
+          </details>
+          <details>
+            <summary>Do I need to pay an agent commission?</summary>
+            <p>No. Discover Land LLC works directly with property owners, so there is no real-estate agent commission.</p>
+          </details>
+          <details>
+            <summary>What information do you need about my land?</summary>
+            <p>The APN, county, state, acreage, or a copy of a tax notice is usually enough to begin.</p>
+          </details>
+          <details>
+            <summary>What types of land do you consider?</summary>
+            <p>We review many types of vacant land, including inherited, remote, unused, and difficult-to-manage parcels.</p>
+          </details>
+          <details>
+            <summary>How long does the process take?</summary>
+            <p>The timing depends on the property and title work. We explain the expected timeline before you agree to proceed.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Ready to discuss your property?</h2>
+            <p>Call, text, or email us. Include the property APN or county when possible.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="tel:+10000000000">(000) 000-0000</a>
+            <a class="btn btn-light" href="mailto:YOUR_EMAIL@example.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><span class="footer-brand">Discover Land LLC</span><br>Land acquisition inquiries</div>
+      <div>© <span id="year"></span> Discover Land LLC. All rights reserved.</div>
+      <div>Professional • Clear • Confidential</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
